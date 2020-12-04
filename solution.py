@@ -118,6 +118,7 @@ def get_route(hostname):
                 icmpHeader = recvPacket[20:28]
                 requestType, code, revChecksum, revId, revSequence = struct.unpack('bbHHh', icmpHeader)
                 #Fill in end
+                host = ""
                 try: #try to fetch the hostname
                     #Fill in start
                     host = str(gethostbyaddr(addr[0])[0])
@@ -169,5 +170,5 @@ def get_route(hostname):
             finally:
                 mySocket.close()
     return tracelist2
-
-
+if __name__ == '__main__':
+    get_route('google.com')
